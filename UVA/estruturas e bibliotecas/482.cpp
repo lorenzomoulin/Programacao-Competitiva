@@ -3,12 +3,14 @@
 #define debug(a) FOR(i, a.size()) cout << a[i] << " "; cout << endl;
 using namespace std;
 
+bool compare(string a, string b){   return stod(a) < stod(b);}
+
 int main(){
     int t;
     cin >>t ;
     getchar();
     while(t--){
-        vector<int> seq; vector<float> a;
+        vector<int> seq; vector<string> a;
         char temp;
         do {
             int b;
@@ -16,17 +18,25 @@ int main(){
             seq.push_back(b);
         }while(temp != '\n');
         //debug(seq)
-        do {
-            float b;
-            scanf("%f%c", &b, &temp);
-            a.push_back(b);
-        }while (temp != '\n');
-        //debug(a);
-        sort(a.begin(), a.end());
-        for (int i = 0; i < seq.size(); i++){
-            printf("%f\n", a[seq[i] - 1]);
+        string res[seq.size() + 1];
+        
+        FOR(i, seq.size()){
+            string abc;
+            cin >> abc;
+            a.push_back(abc);
         }
-        cout << endl;
+        FOR(i, seq.size()){
+            res[seq[i]] = a[i];
+        }
+        //debug(res);
+        //debug(a);
+        //sort(a.begin(), a.end(), compare);
+        for (int i = 1; i <= seq.size(); i++){
+            cout << res[i] << endl;
+            //printf("%s\n", a[seq[i] - 1]);
+        }
+        if(t >= 1)
+            cout << endl;
     }
     return 0;
 }
