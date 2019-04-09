@@ -1,0 +1,76 @@
+Binary Search - OK, Ternary Search
+
+Sieve of Eratosthenes for finding primes - OK
+
+Segment tree (with lazy propagation)
+
+Binary Index tree ( Also known as Fenwick Tree)
+
+Math
+    Game Theory
+        - Nim Game
+
+    Number Theory
+        - Modular Arithmetic
+        - prime numbers
+        - prime factorizations
+        - group theory
+        - modular inverses
+        - modular exponentiation
+        - extended euclidean algorithm - OK
+        - fermat's little theorem
+        - fermat-euler theorem
+        - mobius inversion formula
+        - Euler's Totient Function - OK
+
+    Combinatorics
+        - inclusion/exclusion principle
+        - markov chains
+        - probability distributions
+        - factorials
+        - permutations
+        - combinations
+
+Heap / Priority Queue
+
+Sparse Table
+
+KMP algorithm
+
+Z algorithm
+
+Aho–Corasick algorithm
+
+Suffix Array
+
+Lowest Common Ancestor
+
+Union Find/Disjoint Set
+
+Heavy-light Decomposition
+
+Convex Hull
+
+Network flow
+
+Meet in the Middle
+
+Trie
+
+Topological Sorting
+
+square root decomposition
+
+Matrix exponentiation
+
+Djikstra's algorithm
+
+Bellman-ford algorithm,
+
+Floyd-Warshall Algorithm
+
+Prim's Algorithm
+
+Kruskal's Algorithm
+
+RMQ & LCA
