@@ -17,7 +17,7 @@ int main(){
             scanf("%d%c", &b, &temp);
             seq.push_back(b);
         }while(temp != '\n');
-        //debug(seq)
+
         string res[seq.size() + 1];
         
         FOR(i, seq.size()){
@@ -28,12 +28,10 @@ int main(){
         FOR(i, seq.size()){
             res[seq[i]] = a[i];
         }
-        //debug(res);
-        //debug(a);
-        //sort(a.begin(), a.end(), compare);
+
         for (int i = 1; i <= seq.size(); i++){
             cout << res[i] << endl;
-            //printf("%s\n", a[seq[i] - 1]);
+
         }
         if(t >= 1)
             cout << endl;
