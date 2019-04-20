@@ -25,27 +25,16 @@ int main(){
             cout << a[0].first;
             pop_heap(a, a + n - qtd);
             qtd++;
-            while(a[0].second <= i && qtd < n){
-                
+            while(a[0].second <= i && qtd < n){        
                 cout <<  " " << a[0].first;
-                 pop_heap(a, a + n - qtd);
-            qtd++;
-                //cout << "inicio\n";
-                //rep(j, 0, n - qtd){
-                  //  cout << a[j].first << "\n";
-                    
-                //}
-                //cout << "fim\n";
-                
-                
+                pop_heap(a, a + n - qtd);
+                qtd++;
             }
             cout << "\n";
         }
         else {
             cout << "\n";
-        }
-        
-        
+        } 
     }
     
     return 0;
