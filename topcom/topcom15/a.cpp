@@ -20,7 +20,6 @@ int cont;
 
 bool dfs1(int v){
     visited[v] = 1;
-    //cout << "dfs1 visited: " << v << endl;
     rep(i, 0, sz(uni[v])){
         if(!visited[uni[v][i]]){
             dfs1(uni[v][i]); cont++;
@@ -30,7 +29,6 @@ bool dfs1(int v){
 }
 bool dfs2(int v){
     visited[v] = 1;
-    //cout << "dfs2 visited: " << v << endl;
     rep(i, 0, sz(bi[v])){
         if(!visited[bi[v][i]]){
             dfs2(bi[v][i]); cont++;
@@ -50,7 +48,21 @@ void tarjan(int u){
             if(u == root)   rootChildren++;
             tarjan(v);
             if(low[v] >= num[u])    articulationVertex[u] = true;
-            if(low[v] > num[u]) bridge = true;                
+            if(low[v] > num[u]){ 
+                int conta = 0;
+                for(int i = 0; i < sz(uni[u]); i++)
+                    if(uni[u][i] == v){
+                        conta++;
+                        break;      
+                    }
+                for(int i = 0; i < sz(uni[v]); i++)
+                    if(uni[v][i] == u){
+                        conta++;
+                        break;      
+                    }
+                if(conta == 1)
+                    bridge = true;
+            }                
             low[u] = min(low[u], low[v]);
         }
         else if(v != parent[u]) low[u] = min(low[u], num[v]);
@@ -58,42 +70,9 @@ void tarjan(int u){
     
 }
 
-/*void dfs(int u){
-    low[u] = num[u] = counter++;
-    S.push(u);
-    vis[u] = 1;
-    int v;
-    rep(j, 0, sz(uni[u])){
-        v = uni[u][j];
-        if(num[v] == UNVISITED) dfs(v);
-        if(vis[v]) low[u] = min(low[u], low[v]);
-       
-    }
-    if(low[u] == num[u]){
-        while(true){
-            v = S.top(); S.pop(); vis[v] = 0;
-            component[v]  = numSCC;
-            if(u == v) break;
-        }
-        numSCC++;
-    }
-}
 
-void tarjan(){
-    counter = numSCC = 0;
-    memset(vis, 0, sizeof vis);
-    memset(num, UNVISITED, sizeof num);
-    memset(low, 0, sizeof low);
-    rep(i, 0, n){
-        if(num[i] == UNVISITED)
-            dfs(i);
-    }
-}
-*/
 int main(){
     cin.sync_with_stdio(0);
-
-     
     while(cin >> n >> m){
         counter = numSCC = 0;
         memset(vis, 0 , sizeof vis);
@@ -107,31 +86,21 @@ int main(){
         rep(i, 0, m){
             int u, v , dir;
             cin >> u >> v >> dir;
-            
             if(!i)
                 continue;
             u--, v--;
-            //cout << "dir: " << dir << endl;
             uni[u].pb(v);
             if(dir == 2){
-                uni[v].pb(u);
-                
+                uni[v].pb(u); 
             }
             bi[u].pb(v), bi[v].pb(u);
         }
-        /*rep (i, 0, n){
-            cout << i+1 <<" ";
-            rep(j, 0, sz(uni[i])){
-                cout << uni[i][j] + 1 << " ";
-            }
-            cout << endl;
-        }*/
         
         bool flag = true;
         rep(i, 0, n){
             visited.reset();
             cont = 1;
-            //cout << "buscando " << i << endl;
+
             if(!dfs1(i)){
                 
                 flag = false;
@@ -143,7 +112,7 @@ int main(){
             continue;
         
         }
-        //cout << endl << endl;
+
         visited.reset();
         cont = 1;
         flag = true;
@@ -157,12 +126,11 @@ int main(){
         if(!flag)
             continue;
         bridge = false;
-        rep(i, 0, n){
-            if(num[i] == UNVISITED){
-                root = i; rootChildren = 0; tarjan(i);
-                articulationVertex[root] = (rootChildren > 1);
-            }
-        }
+        for (int i = 0; i < n; i++)
+		    if (num[i] == UNVISITED) {
+			    root = i; rootChildren = 0; tarjan(i);
+			    articulationVertex[root] = (rootChildren > 1);
+		    }
         if(bridge)
             cout << "2\n";
         else

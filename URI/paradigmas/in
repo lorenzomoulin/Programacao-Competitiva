@@ -1,5 +1,4 @@
-2
-6 100
-1 5 10 15 25 50
-2 103
-1 5
+Find the longest common substring
+The substring can be any part of the String
+If there is no common substring, return 0
+The search is case sensitive

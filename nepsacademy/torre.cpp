@@ -17,12 +17,8 @@ int main(){
     ms(peso_coluna, 0);
     rep(i, 0, n)
         rep(j, 0 , n)
-            peso_linha[i] += t[i][j];
-        
-    rep(j, 0, n)
-        rep(i, 0 , n)
-            peso_coluna[j] += t[i][j];
-    
+            peso_linha[i] += t[i][j], peso_coluna[j] += t[i][j];
+
     int peso =0 ;
     rep(i, 0, n)
         rep(j, 0, n)
