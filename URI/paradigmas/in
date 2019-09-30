@@ -1,4 +1,6 @@
-Find the longest common substring
-The substring can be any part of the String
-If there is no common substring, return 0
-The search is case sensitive
+4
+0 -3 5 10
+4
+0 -3 5 7
+4
+47 50 -3 7

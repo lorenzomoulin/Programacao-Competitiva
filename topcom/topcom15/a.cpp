@@ -53,15 +53,18 @@ void tarjan(int u){
                 for(int i = 0; i < sz(uni[u]); i++)
                     if(uni[u][i] == v){
                         conta++;
-                        break;      
+                             
                     }
                 for(int i = 0; i < sz(uni[v]); i++)
                     if(uni[v][i] == u){
                         conta++;
-                        break;      
+                             
                     }
-                if(conta == 1)
+                if(conta == 1){
+                    printf(" Edge (%d, %d) is a bridge\n", u, v);
                     bridge = true;
+                }
+                printf(" Edge (%d, %d) is a bridge\n", u, v);
             }                
             low[u] = min(low[u], low[v]);
         }
@@ -69,7 +72,23 @@ void tarjan(int u){
     }
     
 }
-
+/*
+void tarjan(int u) {
+	low[u] = num[u] = counter++;
+	for (int j = 0, v; j < (int)uni[u].size(); j++) {
+		v = uni[u][j];
+		if (num[v] == UNVISITED) {
+			parent[v] = u;
+			if (u == root) rootChildren++;
+			tarjan(v);
+			if (low[v] >= num[u]) articulationVertex[u] = true;
+			if (low[v] > num[u]) bridge=true,printf(" Edge (%d, %d) is a bridge\n", u, v);
+			low[u] = min(low[u], low[v]);
+		}
+		else if (v != parent[u])
+			low[u] = min(low[u], num[v]);
+	}
+}*/
 
 int main(){
     cin.sync_with_stdio(0);
@@ -126,6 +145,7 @@ int main(){
         if(!flag)
             continue;
         bridge = false;
+        
         for (int i = 0; i < n; i++)
 		    if (num[i] == UNVISITED) {
 			    root = i; rootChildren = 0; tarjan(i);

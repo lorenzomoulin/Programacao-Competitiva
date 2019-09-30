@@ -6,32 +6,48 @@ using namespace std;
 #define sz(x) (int)(x).size()
 #define pb push_back
 typedef long long ll;
+typedef double ld;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
-#define MAXN 10000009
-
-double modexp (double a, double b, double m){
-    if (b == 0) return 1LL;
-    double c = modexp(a, b / 2, m);
-    c = ((ll)(c * c)) % (ll)m;
-    if (((  ll)b) % 2 != 0)
-        c = ((ll)(c * a)) % (ll)m;
-    return c;
+ld f(ld x, int N){
+    //cout << (ll)x << endl;
+    ld dec = x - (ll)x;
+    ll i = (ll)x;
+    //cout << i << 
+    i = i % 10000;
+    x = i;
+    x += dec;
+    x = x * x;
+    dec = x - (ll)x;
+    i = (ll)x;
+    //cout << i << 
+    i = i % 10000;
+    x = i;
+    x += dec;
+    //cout << N << " "<< x  << endl;
+    if (N == 1)
+        return x;
+    if (N % 2)
+        return sqrt(x)*f(x, (N - 1) / 2);
+    return f(x, N/2);
 }
 
 int main() {
     cin.sync_with_stdio(0); cin.tie(0);
     cin.exceptions(cin.failbit);
-    double a, b, n, k;
+    ld a, b, n;int k;
     cin >> a >> b >> n >>k;
+    cout << f(a + sqrt(b), n) << endl;
+    ll res = f(a + sqrt(b), n);
+    
     if (k == 1)
-        cout << modexp((a + sqrt(b)), n, 10LL) << "\n";
+        cout << res % 10 << "\n";
     else if (k == 2)
-        cout << modexp((a + sqrt(b)), n, 100LL) << "\n";
+        cout << res % 100 << "\n";
     else if (k == 3)
-        cout << modexp((a + sqrt(b)), n, 1000LL) << "\n";
+        cout << res % 1000 << "\n";
     else if (k == 4)
-        cout << modexp((a + sqrt(b)), n, 10000LL) << "\n";
+        cout << res % 10000 << "\n";
     return 0;
 }

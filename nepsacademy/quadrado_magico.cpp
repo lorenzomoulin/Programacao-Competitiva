@@ -1,54 +1,20 @@
-#include <bits/stdc++.h>
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
 using namespace std;
 
+template<class T>
+using Tree = tree<T, null_type, less<T>, rb_tree_tag,
+tree_order_statistics_node_update>;
+void example() {
+Tree<int> t, t2; t.insert(8);
+auto it = t.insert(10).first;
+assert(it == t.lower_bound(9));
+assert(t.order_of_key(10) == 1);
+assert(t.order_of_key(11) == 2);
+assert(*t.find_by_order(0) == 8);
+t.join(t2); // assuming T < T2 or T > T2, merge t2 into t
+}
+
 int main(){
-    int n;
-    cin >> n;
-    int a[n][n], soma = 0;
-    rep(i, 0, n){
-        soma = 0;
-        rep(j, 0, n)
-            cin >> a[i][j], soma += a[i][j];
-    }
-    rep(i, 0, n){
-        int temp = 0;
-        rep(j, 0 , n)
-            temp += a[i][j];
-        if (temp != soma){
-            cout << -1 << "\n";
-            return 0;
-        }
-    }
-    rep(j, 0, n){
-        int temp = 0;
-        rep(i, 0 , n)
-            temp += a[i][j];
-        if (temp != soma){
-            cout << -1 << "\n";
-            return 0;
-        }
-    }
-    int temp = 0;
-    rep(i, 0, n){
-        
-        temp += a[i][i];
-        
-    }
-    if (temp != soma){
-        cout << -1 << "\n";
-        return 0;
-    }
-    temp = 0;
-    rep(i, 0, n){
-        
-        temp += a[i][n - i - 1];
-        
-    }
-    if (temp != soma){
-        cout << -1 << "\n";
-        return 0;
-    }
-    cout << soma << "\n";
     return 0;
 }
