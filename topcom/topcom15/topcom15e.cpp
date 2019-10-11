@@ -106,15 +106,7 @@ int main(int argc, char const *argv[])
 	            }
 	        }
 	    }
-	    for (int i = 1; i <= (n+m); ++i)
-	    {
-	    	cout << "[ ";
-	    	for (int j = 0; j < adjU[i].size(); ++j)
-	    	{
-	    		cout << adjU[i][j] << ", ";
-	    	}
-	    	cout << " ], ";
-	    }
+	   
 	    
 	    caso++;
 	    cout << "Caso #" << caso << ": " << hopcroftKarp() << endl;
